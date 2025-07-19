@@ -54,7 +54,7 @@ func corsMiddleware() gin.HandlerFunc {
 		if utils.IsRunningLocally() {
 			allowedOrigin = "http://localhost:3000"
 		} else {
-			allowedOrigin = "https://main.d2n7q246ade5oz.amplifyapp.com"
+			allowedOrigin = "https://main.d29rje26o7av4t.amplifyapp.com"
 		}
 		c.Header("Access-Control-Allow-Origin", allowedOrigin)
 		c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS")
