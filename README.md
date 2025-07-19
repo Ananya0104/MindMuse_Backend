@@ -1,2 +1,1 @@
-# MindMuse_Backend
-AI Companion
+# MindMuse-Backend
