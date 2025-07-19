@@ -17,11 +17,10 @@ import (
 )
 
 // Placeholder for Hugging Face API key
-var HuggingFaceAPIKey = "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"
+var HuggingFaceAPIKey = os.Getenv("HUGGINGFACE_API_KEY")
 
 // ChatRequest represents the incoming chat request from frontend
 // Includes userId, sessionId, and the user's message
-//
 type ChatRequest struct {
 	UserId    string `json:"userId" binding:"required"`
 	SessionId string `json:"sessionId" binding:"required"`
@@ -100,7 +99,7 @@ func callHuggingFaceAPI(prompt string) (string, error) {
 	}
 	body, _ := json.Marshal(map[string]interface{}{
 		"messages": messages,
-		"model":   "moonshotai/Kimi-K2-Instruct:novita",
+		"model":    "moonshotai/Kimi-K2-Instruct:novita",
 	})
 
 	req, err := http.NewRequestWithContext(context.Background(), "POST", apiURL, ioutil.NopCloser(bytes.NewReader(body)))
@@ -137,4 +136,4 @@ func callHuggingFaceAPI(prompt string) (string, error) {
 		return hfResp.Choices[0].Message.Content, nil
 	}
 	return "", os.ErrInvalid
-} 
+}
